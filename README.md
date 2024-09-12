@@ -1,46 +1,71 @@
-# Getting Started with Create React App
+# React Articles Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a React and TypeScript application that fetches articles from a REST API and displays them in a visually appealing manner.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+The application includes two views:
+1. A front page that displays a list of articles with a title, summary, and a numbered box.
+2. A detail page that shows the full content of an article when a user selects it from the list.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **React**: Used for building the user interface.
+- **TypeScript**: Ensures strong typing and helps prevent bugs during development.
+- **React Router (`react-router-dom ^6.26.2`)**: For client-side routing to switch between the article list and article details pages.
+- **CSS (Flexbox)**: For styling and ensuring a responsive layout with three articles per row on larger screens.
+- **Fetch API**: To make requests to the provided REST API and retrieve the articles.
+- **State Management**: Managed using React’s `useState` and `useEffect` hooks.
+- **Error Handling**: Implemented in both the API calls and UI rendering.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Approach
 
-### `npm test`
+### 1. Fetching Articles
+- The articles are fetched from two API endpoints: one for all articles and another for article details based on the `id`.
+- `async/await` with the `fetch` API is used to handle asynchronous operations.
+- Articles are sorted by `id` in ascending order before being displayed.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 2. State Management
+- The application uses `useState` to manage the list of articles, the selected article, loading states, and errors.
+- For example, when fetching articles, the loading state is displayed until the data is retrieved.
 
-### `npm run build`
+### 3. Routing
+- **React Router** is used to navigate between the article list and article detail pages.
+- The detail view for a specific article is routed by its `id` parameter.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 4. Layout and Styling
+- Flexbox is used to create a responsive layout, ensuring that three articles appear per row on larger screens and stack vertically on smaller screens.
+- The article title, summary, and number are styled neatly in the card layout for readability.
+- The article detail page follows a similar structure, with titles and content displayed responsively.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 5. Error Handling
+- Errors are handled by catching errors during API requests and displaying user-friendly error messages in the UI.
+- Error boundaries prevent the application from breaking due to data-fetching issues.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 6. Sorting
+- After fetching the articles, they are sorted by `id` using `array.sort()` to ensure they are displayed in the correct order for a better user experience.
 
-### `npm run eject`
+## Challenges Faced & Solutions
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 1. API Data Handling
+- **Challenge**: Ensuring that API data is fetched correctly and displayed without affecting performance.
+- **Solution**: Using `useEffect` for data fetching on component mount, and proper state management to store and display the data.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 2. Responsive Layout
+- **Challenge**: Making sure that the layout is responsive and works well on both large and small screens.
+- **Solution**: Flexbox was used to create a flexible layout that adjusts automatically depending on the screen size.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 3. Handling Loading & Error States
+- **Challenge**: Managing loading and error states to ensure a smooth user experience.
+- **Solution**: Conditional rendering was implemented to show appropriate loading spinners or error messages when necessary.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 4. Title & Article Number Alignment
+- **Challenge**: Long titles and article numbers were breaking the layout.
+- **Solution**: Flexbox and CSS techniques like `word-wrap`, `nowrap`, and proper spacing were used to ensure clean and responsive alignment.
 
-## Learn More
+## How to Run the Project
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone the repository to your local machine.
+2. Run `npm install` to install all dependencies.
+3. Start the development server by running `npm start`.
+4. The application will be available at `http://localhost:3000`.

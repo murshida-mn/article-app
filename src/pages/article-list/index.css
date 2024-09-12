@@ -1,0 +1,85 @@
+.article-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.article-list h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.article-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping to next line if needed */
+  justify-content: space-between; /* Space articles evenly */
+}
+
+.article-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 30%; /* Each card takes 30% of the row */
+  margin-bottom: 20px; /* Space between rows */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column; /* Align elements vertically */
+  justify-content: space-between; /* Ensure spacing between summary and link */
+  box-sizing: border-box;
+}
+
+.article-card:hover {
+  transform: translateY(-5px); /* Elevation effect on hover */
+}
+
+.article-number {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.article-title {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.article-summary {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 15px;
+  flex-grow: 1; /* Ensure summary takes up available space */
+}
+
+.read-more {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  align-self: flex-start; /* Align link to the left */
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+/* Responsive design for tablets */
+@media (max-width: 768px) {
+  .article-card {
+    width: 45%; /* 2 articles per row */
+  }
+}
+
+/* Responsive design for mobile */
+@media (max-width: 576px) {
+  .article-card {
+    width: 100%; /* 1 article per row */
+  }
+}
