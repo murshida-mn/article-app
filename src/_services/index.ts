@@ -1,5 +1,5 @@
 import { API_BASE_URL } from "../_constants";
-import { Article } from "../_types";
+import { Article, FullArticle } from "../_types";
 
 /**
  * Fetch all articles from the API.
@@ -25,7 +25,7 @@ export const getArticles = async (): Promise<Article[]> => {
  * @param {string} id - The ID of the article.
  * @returns {Promise<FullArticle>} - A promise that resolves to the full article.
  */
-export const getArticleById = async (id: string): Promise<Article> => {
+export const getArticleById = async (id: string): Promise<FullArticle> => {
   try {
     const response = await fetch(`${API_BASE_URL}/articles/${id}`);
    
@@ -33,7 +33,7 @@ export const getArticleById = async (id: string): Promise<Article> => {
       throw new Error(`Failed to fetch article with ID ${id}: ${response.status}`);
     }
    
-    const data: Article = await response.json();
+    const data: FullArticle = await response.json();
     return data;
   } catch (error) {
     throw new Error(`Error fetching article by ID ${id}: ${error}`);

@@ -3,3 +3,7 @@ export interface Article {
   title: string;
   summary: string;
 }
+
+export interface FullArticle extends Article {
+  fullText: string;
+}

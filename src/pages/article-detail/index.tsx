@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { getArticleById } from '../../_services';
 import { useParams } from 'react-router-dom';
-import { Article } from '../../_types';
+import { FullArticle } from '../../_types';
 import './index.css';
 
 function ArticleDetail() {
   const { id } = useParams<{ id: string }>();
-  const [article, setArticle] = useState<Article | null>(null);
+  const [article, setArticle] = useState<FullArticle | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -33,7 +33,7 @@ function ArticleDetail() {
   if (loading) return <div className="loading-message">Loading article...</div>;
   if (error) return <div className="error-message">{error}</div>;
   if (!article) return <div className="error-message">Article not found.</div>;
-  
+
   return (
     <div className="article-detail">
       <div className="article-header">
@@ -41,7 +41,7 @@ function ArticleDetail() {
         <div className="article-number">Article {article?.id}</div>
       </div>
       <div className="article-body">
-        <p className="article-content">{article?.summary || 'No content available.'}</p>
+        <p className="article-content">{article?.fullText || 'No content available.'}</p>
       </div>
       <div className="back-link">
         <a href="/">Back to Articles</a>
